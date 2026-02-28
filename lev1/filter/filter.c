@@ -40,29 +40,27 @@ char	*read_stdin(void)
 			return (NULL);
 		total_size += read_size;
 	}
-	src[total_size + 1] = '\0';
+	src[total_size] = '\0';
 	return (src);
 }
 
 void	filter_src(char *src, char *key, size_t key_len)
 {
 	char	*tmp;
-	char	*current_ptr;
-	size_t	count;
+	size_t	i;
 
-	current_ptr = src;
 	while (1)
 	{
-		count = 0;
-		tmp = memmem(current_ptr, strlen(current_ptr), key, key_len);
+		i = 0;
+		tmp = memmem(tmp, strlen(tmp), key, key_len);
 		if (tmp == NULL || *tmp == '\0')
 			break ;
-		while (count < key_len)
+		while (i < key_len)
 		{
-			tmp[count] = '*';
-			count++;
+			tmp[i] = '*';
+			i++;
 		}
-		current_ptr = tmp + key_len;
+		tmp += key_len;
 	}
 }
 
@@ -71,7 +69,7 @@ int	main(int ac, char **av)
 	char	*src;
 
 	if (ac != 2 || av[1][0] == '\0')
-		return (printf("ERROR\n"), 1);
+		return (write(1, "ERROR\n", 6), 1);
 	src = read_stdin();
 	if (src == NULL)
 		return (perror("ERROR"), 1);
