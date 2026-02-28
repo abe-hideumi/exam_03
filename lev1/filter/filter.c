@@ -6,7 +6,7 @@
 /*   By: habe <habe@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 17:08:04 by habe              #+#    #+#             */
-/*   Updated: 2026/02/24 17:10:51 by habe             ###   ########.fr       */
+/*   Updated: 2026/02/28 13:54:41 by habe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*read_stdin(void)
 			return (NULL);
 		total_size += read_size;
 	}
-	src[total_size] = '\0';
+	src[total_size + 1] = '\0';
 	return (src);
 }
 
