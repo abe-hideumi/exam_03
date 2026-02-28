@@ -6,7 +6,7 @@
 /*   By: habe <habe@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 17:08:12 by habe              #+#    #+#             */
-/*   Updated: 2026/02/28 10:39:52 by habe             ###   ########.fr       */
+/*   Updated: 2026/02/28 14:17:36 by habe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+
+#define TRUE 1
+#define FALSE 0
 
 int	is_valid(int *pos, int row, int col)
 {
@@ -23,10 +26,10 @@ int	is_valid(int *pos, int row, int col)
 	while (i < row)
 	{
 		if (pos[i] == col || pos[i] - col == i - row || pos[i] - col == row - i)
-			return (1);
+			return (TRUE);
 		i++;
 	}
-	return (0);
+	return (FALSE);
 }
 
 void	solve(int *pos, int row, int n)
@@ -50,7 +53,7 @@ void	solve(int *pos, int row, int n)
 	col = 0;
 	while (col < n)
 	{
-		if (is_valid(pos, row, col) != 1)
+		if (is_valid(pos, row, col) != TRUE)
 		{
 			pos[row] = col;
 			solve(pos, row + 1, n);

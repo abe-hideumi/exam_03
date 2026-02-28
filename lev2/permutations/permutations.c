@@ -6,13 +6,16 @@
 /*   By: habe <habe@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 17:08:15 by habe              #+#    #+#             */
-/*   Updated: 2026/02/28 13:53:47 by habe             ###   ########.fr       */
+/*   Updated: 2026/02/28 14:20:35 by habe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#define TRUE 1
+#define FALSE 0
 
 int	check_dup(char *str)
 {
@@ -28,12 +31,12 @@ int	check_dup(char *str)
 		while (str[j] != '\0')
 		{
 			if (c == str[j])
-				return (1);
+				return (TRUE);
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	return (FALSE);
 }
 
 int	ft_strlen(char *str)
@@ -84,7 +87,7 @@ void	permute(char *str, char *result, int *used, int len, int depth)
 	i = 0;
 	while (i < len)
 	{
-		if (!used[i])
+		if (used[i] == 0)
 		{
 			used[i] = 1;
 			result[depth] = str[i];

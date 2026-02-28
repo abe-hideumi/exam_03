@@ -6,7 +6,7 @@
 /*   By: habe <habe@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 17:08:04 by habe              #+#    #+#             */
-/*   Updated: 2026/02/28 13:54:41 by habe             ###   ########.fr       */
+/*   Updated: 2026/02/28 14:23:47 by habe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	main(int ac, char **av)
 		return (printf("ERROR\n"), 1);
 	src = read_stdin();
 	if (src == NULL)
-		return (perror("ERROR\n"), 1);
+		return (perror("ERROR"), 1);
 	filter_src(src, av[1], strlen(av[1]));
 	printf("%s", src);
 	free(src);

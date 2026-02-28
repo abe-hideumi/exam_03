@@ -6,7 +6,7 @@
 /*   By: habe <habe@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 17:08:08 by habe              #+#    #+#             */
-/*   Updated: 2026/02/28 14:03:51 by habe             ###   ########.fr       */
+/*   Updated: 2026/02/28 14:34:40 by habe             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdio.h>
+
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 1
+#elif BUFFER_SIZE > 1
+# undef BUFFER_SIZE
+# define BUFFER_SIZE 1
+#endif
 
 char	*get_next_line(int fd)
 {
@@ -25,7 +32,7 @@ char	*get_next_line(int fd)
 	if (!line)
 		return (NULL);
 	i = 0;
-	while (read(fd, &c, 1) > 0)
+	while (read(fd, &c, BUFFER_SIZE) > 0)
 	{
 		line[i++] = c;
 		if (c == '\n')
